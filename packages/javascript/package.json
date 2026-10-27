@@ -1,0 +1,36 @@
+{
+  "name": "@openmuse-ai/sdk",
+  "version": "1.0.0",
+  "description": "Official TypeScript and JavaScript SDK for the OpenMuse API",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "tsup": "^9.0.0",
+    "typescript": "^5.8.0",
+    "vitest": "^4.1.12"
+  }
+}

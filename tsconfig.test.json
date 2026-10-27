@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "noEmit": true },
+  "include": ["src/backend/**/*.test.ts", "src/backend/**/*.spec.ts"],
+  "exclude": []
+}
