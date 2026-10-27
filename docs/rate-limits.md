@@ -1,0 +1,5 @@
+# Rate limits and usage
+
+Public access does not imply unlimited inference. Current defaults: 30 requests per IP per 60 seconds for standard operations, 3 per IP per 60 seconds for vision/image generation; maximum 4 simultaneous generation requests. All values are configurable in `.env.example`. Request bodies default to an 8 MiB maximum (to accommodate 5 MiB base64 vision inputs); provider operations time out at 30 seconds. Responses include `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `Retry-After` on 429.
+
+Current rate and concurrency counters are in-process memory. Behind a proxy, the Node transport peer address may represent the proxy; arbitrary `X-Forwarded-For` is deliberately not trusted. Multi-instance production requires a shared rate-limit store, proxy-sanitized client IP integration, monitoring and provider/platform-level spending quotas. CORS is not a security mechanism. Avoid blind automatic retries: generation requests are not idempotent. The operator's actual infrastructure and policies determine availability/cost.
